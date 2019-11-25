@@ -3,9 +3,14 @@
 <head>
 
 <title>CS quiz</title>
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> -->
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <script>
-        var flag = 0;
+        var correct = 0;
+        var flag = 0; // to stop timer 
 	//set minutes 
         var mins = 0.2; 
   
@@ -83,19 +88,25 @@ function check(){
 	q[i++] = document.quiz.question2.value;
 	q[i++] = document.quiz.question3.value;
 	q[i++] = document.quiz.question4.value;
-	var correct = 0;
 	var answers = ["Providence","Hartford","Albany","Computer"];
 
 	for(j=0;j<q.length;j++){
 		if(q[j]==answers[j]){
 			correct++;
 		}
-	}
+    }
+    // document.style.visibility="hidden";
 	document.getElementById("after_submit").style.visibility = "visible";
     document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
-    Student.marksscored = correct;
-	}
-	
+    document.getElementById('markval').value = correct;
+    }
+    
+// $('#quiz1').on('submit', function() {
+//     var id = correct;
+//     var formAction = $('#quiz1').attr('action');
+//     $('#quiz1').attr('action', formAction + id);
+// });
+
 </script>
 
 </head>
@@ -113,7 +124,7 @@ function check(){
     </div> 
 <h1>Test</h1>
 
-<form id = "quiz" name = "quiz" action="/dispcsmarks">
+<form id = "quiz" name="quiz">
 
 <p class = "questions">What is the capital of Rhode Island?</p>
 <input type = "radio" id = "mc" name = "question1" value = "prov"> prov<br>
@@ -132,16 +143,18 @@ function check(){
 
 <input type = "radio" id = "mc" name = "question4" value = "Computer"> Computer<br>
 <input type = "radio" id = "mc" name = "question4" value = "Mechanical"> Mechanical<br>
-
-<input id = "button" type = "button" value = "I'm finished!" onclick = "check();">
-
+<input type="button" value="end" onclick="check()">
+<!-- //<input type="number" id="hidethis"><br> // This is always hidden. Add value to this using innerHTML -->
 </form>
 
+<form id="quiz1" action="/dispcscmarks" method="POST">
+        <input id="markval" type="text" name="marks" style="display: none;" value="0">
+      <input id = "button" type = "submit" value = "I'm finished!" >
+</form>
 <div id = "after_submit">
 <p id = "number_correct"></p>
-<p id = "message"></p>
-<img id = "picture">
 </div>
+
 </html>
 
 </body>

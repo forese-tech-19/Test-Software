@@ -14,7 +14,7 @@ app.set("view engine","ejs");
 
 var studentSchema = mongoose.Schema({
     rollno: String,
-    marksscored : Number,
+    marksscored : String,
     name : String
 });
 
@@ -22,7 +22,9 @@ var Student = mongoose.model("Student",studentSchema);
 
 // var data={
 //     name:"Humaid",
-//     rollno:"cs18059"
+//     rollno:"cs180501059",
+//     marksscored:"0"
+
 // }
 // Student.create(data,function(err,Student){
 //     if(err){
@@ -31,7 +33,22 @@ var Student = mongoose.model("Student",studentSchema);
 //         console.log("Successfully created");
 //     }
 // })
-
+var rollno;
+var name;
+var marksscored;
+app.post("/dispcscmarks",function(req,res){
+    marksscored = req.body.marks;
+    console.log(marksscored);
+    // console.log(name);
+    // console.log(rollno);
+    Student.findOneAndUpdate({rollno:rollno},{marksscored:marksscored},function(err,student){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(student);
+        }
+    })
+})
 app.get("/csclogin",function(req,res){
     res.render("csclogin");
 });
@@ -41,8 +58,8 @@ app.get("/",function(req,res){
 });
 
 app.post("/cscchecklogin",function(req,res){
-    var rollno = req.body.rollno;
-    var name = req.body.name;
+    rollno = req.body.rollno;
+    name = req.body.name;
     Student.find({rollno:rollno,name:name},function(err,student){
         if(err){
             console.log(err);
