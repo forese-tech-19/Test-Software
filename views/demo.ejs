@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Kevin's Kwiz!</title>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<script>
+        var flag = 0;
+	//set minutes 
+        var mins = 0.2; 
+  
+        //calculate the seconds 
+        var secs = mins * 60; 
+  
+        //countdown function is evoked when page is loaded 
+        function countdown() { 
+            setTimeout('Decrement()', 60); 
+            // check();
+        } 
+  
+        //Decrement function decrement the value. 
+        function Decrement() { 
+            if (document.getElementById) { 
+                minutes = document.getElementById("minutes"); 
+                seconds = document.getElementById("seconds"); 
+  
+                //if less than a minute remaining 
+                //Display only seconds value. 
+                if(flag==0){ // to make sure after clicking button timer doesnt run
+                        if (seconds < 59) { 
+                        seconds.value = secs; 
+                    } 
+    
+                    //Display both minutes and seconds 
+                    //getminutes and getseconds is used to 
+                    //get minutes and seconds 
+                    else { 
+                        minutes.value = getminutes(); 
+                        seconds.value = getseconds(); 
+                    } 
+                    //when less than a minute remaining 
+                    //colour of the minutes and seconds 
+                    //changes to red 
+                    if (mins < 1) { 
+                        minutes.style.color = "red"; 
+                        seconds.style.color = "red"; 
+                    } 
+                    //if seconds becomes zero, 
+                    //then page alert time up 
+                    if (mins < 0) { 
+                        check();
+                        alert('time up'); 
+                        document.querySelector("#id").click();
+                        minutes.value = 0; 
+                        seconds.value = 0; 
+                    } 
+                    //if seconds > 0 then seconds is decremented 
+                    else { 
+                        secs--; 
+                        setTimeout('Decrement()', 1000); 
+                    } 
+                }
+            } 
+        } 
+
+        function getminutes() { 
+            //minutes is seconds divided by 60, rounded down 
+            mins = Math.floor(secs / 60); 
+            return mins; 
+        } 
+  
+        function getseconds() { 
+            //take minutes remaining (as seconds) away  
+            //from total seconds remaining 
+            return secs - Math.round(mins * 60); 
+        } 
+        // END OF TIMER
+	var i=0;
+	var q=[];
+function check(){
+    flag = 1;
+	q[i++] = document.quiz.question1.value;
+	q[i++] = document.quiz.question2.value;
+	q[i++] = document.quiz.question3.value;
+	q[i++] = document.quiz.question4.value;
+	var correct = 0;
+	var answers = ["Providence","Hartford","Albany","Computer"];
+
+	for(j=0;j<q.length;j++){
+		if(q[j]==answers[j]){
+			correct++;
+		}
+	}
+	document.getElementById("after_submit").style.visibility = "visible";
+    document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
+    Student.marksscored = correct;
+	}
+	
+</script>
+
+</head>
+
+<body onload="countdown();">
+	<div> 
+        Time Left :: 
+        <input id="minutes" type="text" style="width: 10px; 
+             border: none; font-size: 16px;  
+            font-weight: bold; color: black;"><font size="5"> : 
+                        </font> 
+        <input id="seconds" type="text" style="width: 20px; 
+                        border: none; font-size: 16px; 
+                        font-weight: bold; color: black;"> 
+    </div> 
+<h1>Test</h1>
+
+<form id = "quiz" name = "quiz" action="/dispcsmarks">
+
+<p class = "questions">What is the capital of Rhode Island?</p>
+<input type = "radio" id = "mc" name = "question1" value = "prov"> prov<br>
+<input type = "radio" id = "mc" name = "question1" value = "Providence"> providence<br>
+
+<p class = "questions">What is the capital of Connecticut?</p>
+<input type = "radio" id = "mc" name = "question2" value = "Hartford"> Hartford<br>
+<input type = "radio" id = "mc" name = "question2" value = "Heartford"> Heartford<br>
+
+<p class = "questions">What is the capital of New York?</p>
+
+<input type = "radio" id = "mc" name = "question3" value = "Albany"> Albany<br>
+<input type = "radio" id = "mc" name = "question3" value = "All Benny's"> All Benny's<br>
+
+<p class = "questions">What is the best dept?</p>
+
+<input type = "radio" id = "mc" name = "question4" value = "Computer"> Computer<br>
+<input type = "radio" id = "mc" name = "question4" value = "Mechanical"> Mechanical<br>
+
+<input id = "button" type = "button" value = "I'm finished!" onclick = "check();">
+
+</form>
+
+<div id = "after_submit">
+<p id = "number_correct"></p>
+<p id = "message"></p>
+<img id = "picture">
+</div>
+</html>
+
+</body>
