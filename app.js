@@ -45,7 +45,7 @@ app.post("/dispcscmarks",function(req,res){
         if(err){
             console.log(err);
         }else{
-            console.log(student);
+            console.log("Updated in database");
         }
     })
 })

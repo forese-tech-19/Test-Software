@@ -54,8 +54,7 @@
                     //then page alert time up 
                     if (mins < 0) { 
                         check();
-                        alert('time up'); 
-                        document.querySelector("#id").click();
+                        document.querySelector("#button").click();
                         minutes.value = 0; 
                         seconds.value = 0; 
                     } 
@@ -144,7 +143,6 @@ function check(){
 <input type = "radio" id = "mc" name = "question4" value = "Computer"> Computer<br>
 <input type = "radio" id = "mc" name = "question4" value = "Mechanical"> Mechanical<br>
 <input type="button" value="end" onclick="check()">
-<!-- //<input type="number" id="hidethis"><br> // This is always hidden. Add value to this using innerHTML -->
 </form>
 
 <form id="quiz1" action="/dispcscmarks" method="POST">
