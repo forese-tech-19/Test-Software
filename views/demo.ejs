@@ -3,7 +3,52 @@
 <head>
 
 <title>CS quiz</title>
-<!-- <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+<!-- COPY THIS TO A SEPERATE FOLDER LATER -->
+<style>
+    .navbar-custom {
+    font-weight: bold;
+    }
+   
+    .navbar-nav > li{
+    padding-left:100px;
+    padding-right:100px;
+    }
+    #n{
+        color: #ffffff;
+    }
+    body{
+        margin-top: 75px;
+
+	background-color:#e3f2fd;
+    }
+    .container{
+	margin-bottom: 1%;
+	margin-top: 3%;
+/*	background-image: linear-gradient(to bottom right,#0F2027, #2C5364);*/
+	background-color: #ffffff;	
+	border-radius: 25px;
+  	border: 2px solid #1e3c72;
+    }   
+    h1{
+    text-align: center;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    }
+
+    hr { 
+	color: #bdc3c7;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+    /* NOTE HR property has to be changed */
+
+</style>
+
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -111,37 +156,57 @@ function check(){
 </head>
 
 <body onload="countdown();">
-	<div> 
-        Time Left :: 
-        <input id="minutes" type="text" style="width: 10px; 
-             border: none; font-size: 16px;  
-            font-weight: bold; color: black;"><font size="5"> : 
-                        </font> 
-        <input id="seconds" type="text" style="width: 20px; 
-                        border: none; font-size: 16px; 
-                        font-weight: bold; color: black;"> 
-    </div> 
-<h1>Test</h1>
+<nav class="navbar fixed-top navbar-dark bg-dark navbar-custom" >
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item">
+			<span class="navbar-text" id="n" >
+   			 Maximum Score : 100
+  			</span>
+		</li>
+	</ul>
+  	<ul class="navbar-nav ml-auto">
+		<li class="nav-item">
+			<span class="navbar-text" id="n" >
+                <div> 
+                    Time Left :: 
+                    <input id="minutes" type="text" style="width: 10px; 
+                         border: none; font-size: 16px;  
+                        font-weight: bold; color: black;"><font size="5"> : 
+                                    </font> 
+                    <input id="seconds" type="text" style="width: 20px; 
+                                    border: none; font-size: 16px; 
+                                    font-weight: bold; color: black;"> 
+                </div> 
+  			</span>
+		</li>
+	</ul>
+	</nav>
+	
+<h1>Computer Science</h1>
+
+<div class="container">
 
 <form id = "quiz" name="quiz">
 
 <p class = "questions">What is the capital of Rhode Island?</p>
 <input type = "radio" id = "mc" name = "question1" value = "prov"> prov<br>
 <input type = "radio" id = "mc" name = "question1" value = "Providence"> providence<br>
-
+<hr>
 <p class = "questions">What is the capital of Connecticut?</p>
 <input type = "radio" id = "mc" name = "question2" value = "Hartford"> Hartford<br>
 <input type = "radio" id = "mc" name = "question2" value = "Heartford"> Heartford<br>
-
+<hr>
 <p class = "questions">What is the capital of New York?</p>
 
 <input type = "radio" id = "mc" name = "question3" value = "Albany"> Albany<br>
 <input type = "radio" id = "mc" name = "question3" value = "All Benny's"> All Benny's<br>
-
+<hr>
 <p class = "questions">What is the best dept?</p>
 
 <input type = "radio" id = "mc" name = "question4" value = "Computer"> Computer<br>
 <input type = "radio" id = "mc" name = "question4" value = "Mechanical"> Mechanical<br>
+<br>
+
 <input type="button" value="end" onclick="check()">
 </form>
 
@@ -151,6 +216,7 @@ function check(){
 </form>
 <div id = "after_submit">
 <p id = "number_correct"></p>
+</div>
 </div>
 
 </html>
