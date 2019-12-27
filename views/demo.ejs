@@ -9,41 +9,44 @@
 
 <!-- COPY THIS TO A SEPERATE FOLDER LATER -->
 <style>
+    
     .navbar-custom {
-    font-weight: bold;
+         font-weight: bold;
     }
-   
+    
     .navbar-nav > li{
-    padding-left:100px;
-    padding-right:100px;
+         padding-left:100px;
+         padding-right:100px;
     }
     #n{
         color: #ffffff;
     }
+
     body{
         margin-top: 75px;
-
-	background-color:#e3f2fd;
+	    background-color:#e3f2fd;
     }
+
     .container{
-	margin-bottom: 1%;
-	margin-top: 3%;
-/*	background-image: linear-gradient(to bottom right,#0F2027, #2C5364);*/
-	background-color: #ffffff;	
-	border-radius: 25px;
-  	border: 2px solid #1e3c72;
+        margin-bottom: 1%;
+        margin-top: 3%;
+    /*	background-image: linear-gradient(to bottom right,#0F2027, #2C5364);*/
+        background-color: #ffffff;	
+        border-radius: 25px;
+        border: 2px solid #1e3c72;
     }   
+
     h1{
-    text-align: center;
-    color: #000000;
-    font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: #000000;
+        font-family: 'Roboto', sans-serif;
     }
 
     hr { 
-	color: #bdc3c7;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        color: #bdc3c7;
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
     }
     /* NOTE HR property has to be changed */
 
@@ -117,7 +120,7 @@
             mins = Math.floor(secs / 60); 
             return mins; 
         } 
-  
+
         function getseconds() { 
             //take minutes remaining (as seconds) away  
             //from total seconds remaining 
@@ -125,16 +128,34 @@
         } 
         // END OF TIMER
 	var i=0;
-	var q=[];
+    var q=[];
+
 function check(){
     flag = 1;
 	q[i++] = document.quiz.question1.value;
 	q[i++] = document.quiz.question2.value;
 	q[i++] = document.quiz.question3.value;
-	q[i++] = document.quiz.question4.value;
-	var answers = ["Providence","Hartford","Albany","Computer"];
+    q[i++] = document.quiz.question4.value;
+	q[i++] = document.quiz.question5.value;
+	q[i++] = document.quiz.question6.value;
+	q[i++] = document.quiz.question7.value;
+	q[i++] = document.quiz.question8.value;
+	// q[i++] = document.quiz.question9.value;
+	// q[i++] = document.quiz.question10.value;
+	// q[i++] = document.quiz.question11.value;
+	// q[i++] = document.quiz.question12.value;
+	// q[i++] = document.quiz.question13.value;
+	// q[i++] = document.quiz.question14.value;
+	// q[i++] = document.quiz.question15.value;
+	// q[i++] = document.quiz.question416.value;
+	// q[i++] = document.quiz.question17.value;
+    // q[i++] = document.quiz.question18.value;
+    // q[i++] = document.quiz.question19.value;
+    // q[i++] = document.quiz.question20.value;
+    
+    var answers = ["Providence","Hartford","Albany","Computer","Providence","Hartford","Albany","Computer"];
 
-	for(j=0;j<q.length;j++){
+	for(j=0;j<8;j++){
 		if(q[j]==answers[j]){
 			correct++;
 		}
@@ -152,7 +173,6 @@ function check(){
 // });
 
 </script>
-
 </head>
 
 <body onload="countdown();">
@@ -180,7 +200,7 @@ function check(){
   			</span>
 		</li>
 	</ul>
-	</nav>
+</nav>
 	
 <h1>Computer Science</h1>
 
@@ -188,10 +208,12 @@ function check(){
 
 <form id = "quiz" name="quiz">
 
+<p>Section A</p>
 <p class = "questions">What is the capital of Rhode Island?</p>
 <input type = "radio" id = "mc" name = "question1" value = "prov"> prov<br>
 <input type = "radio" id = "mc" name = "question1" value = "Providence"> providence<br>
 <hr>
+
 <p class = "questions">What is the capital of Connecticut?</p>
 <input type = "radio" id = "mc" name = "question2" value = "Hartford"> Hartford<br>
 <input type = "radio" id = "mc" name = "question2" value = "Heartford"> Heartford<br>
@@ -205,6 +227,25 @@ function check(){
 
 <input type = "radio" id = "mc" name = "question4" value = "Computer"> Computer<br>
 <input type = "radio" id = "mc" name = "question4" value = "Mechanical"> Mechanical<br>
+
+<p class = "questions">What is the capital of Rhode Island?</p>
+<input type = "radio" id = "mc" name = "question5" value = "prov"> prov<br>
+<input type = "radio" id = "mc" name = "question5" value = "Providence"> providence<br>
+<hr>
+<p class = "questions">What is the capital of Connecticut?</p>
+<input type = "radio" id = "mc" name = "question6" value = "Hartford"> Hartford<br>
+<input type = "radio" id = "mc" name = "question6" value = "Heartford"> Heartford<br>
+<hr>
+<p class = "questions">What is the capital of New York?</p>
+
+<input type = "radio" id = "mc" name = "question7" value = "Albany"> Albany<br>
+<input type = "radio" id = "mc" name = "question7" value = "All Benny's"> All Benny's<br>
+<hr>
+<p class = "questions">What is the best dept?</p>
+
+<input type = "radio" id = "mc" name = "question8" value = "Computer"> Computer<br>
+<input type = "radio" id = "mc" name = "question8" value = "Mechanical"> Mechanical<br>
+
 <br>
 
 <input type="button" value="end" onclick="check()">

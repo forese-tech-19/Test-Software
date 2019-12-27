@@ -3,6 +3,27 @@ var app=express();
 var bodyParser=require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 var mongoose=require("mongoose");
+// ---->
+// var MongoClient = require('mongodb').MongoClient,
+//   f = require('util').format,
+//   assert = require('assert');
+
+// var user = encodeURIComponent('humaid');
+// var password = encodeURIComponent('abc123');
+// var authMechanism = 'DEFAULT';
+
+// // Connection URL
+// var url = f('mongodb://localhost:27017/TestSoftware',
+//   user, password, authMechanism);
+
+// // Use connect method to connect to the Server
+// MongoClient.connect(url, function(err, db) {
+//   assert.equal(null, err);
+//   console.log("Connected correctly to server");
+
+//   db.close();
+// });
+// --->
 mongoose.connect("mongodb://localhost:27017/TestSoftware",{useNewUrlParser:true});
 
 //app.use(express.static(__dirname+"/public"));
@@ -21,8 +42,8 @@ var studentSchema = mongoose.Schema({
 var Student = mongoose.model("Student",studentSchema);
 
 // var data={
-//     name:"Humaid",
-//     rollno:"cs180501059",
+//     name:"Hari",
+//     rollno:"cs180501050",
 //     marksscored:"0"
 
 // }
