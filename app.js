@@ -36,16 +36,16 @@ app.set("view engine","ejs");
 var studentSchema = mongoose.Schema({
     rollno: String,
     marksscored : String,
-    name : String
+    name : String,
+    email : String
 });
 
 var Student = mongoose.model("Student",studentSchema);
 
 // var data={
-//     name:"Hari",
-//     rollno:"cs180501050",
+//     name:"Haris",
+//     rollno:"cs180501053",
 //     marksscored:"0"
-
 // }
 // Student.create(data,function(err,Student){
 //     if(err){
@@ -81,11 +81,12 @@ app.get("/",function(req,res){
 app.post("/cscchecklogin",function(req,res){
     rollno = req.body.rollno;
     name = req.body.name;
-    Student.find({rollno:rollno,name:name},function(err,student){
+    email = req.body.email;
+    Student.create({rollno:rollno,name:name,email:email,marksscored:'0'},function(err,student){
         if(err){
             console.log(err);
         }else{
-            res.render("demo",{Student:Student})
+            res.render("demo",{Student:student})
         }
     })
 })
